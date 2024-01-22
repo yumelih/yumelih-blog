@@ -14,6 +14,7 @@ export default function Button({
         {
           "mt-6 w-full bg-green-600": style === "normal",
           "w-full bg-green-500 px-4 lg:w-auto": style === "additional",
+          " w-full max-w-3xl bg-green-600 ": style === "pagination",
         },
       )}
     >
