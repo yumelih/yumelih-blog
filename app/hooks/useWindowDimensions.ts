@@ -8,14 +8,16 @@ function getWindowDimensions() {
     innerHeight: number;
   }
 
-  const win: Window = window;
+  if (typeof window !== "undefined") {
+    const win: Window = window;
 
-  const { innerWidth: width, innerHeight: height } = win;
+    const { innerWidth: width = 0, innerHeight: height = 0 } = win;
 
-  return {
-    width,
-    height,
-  };
+    return {
+      width,
+      height,
+    };
+  }
 }
 
 function useWindowDimensions() {
@@ -27,13 +29,14 @@ function useWindowDimensions() {
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
     }
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
 
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
-  return windowDimensions;
+  return windowDimensions || { width: 0, height: 0 };
 }
 
 export default useWindowDimensions;
