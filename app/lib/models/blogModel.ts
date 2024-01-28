@@ -12,6 +12,12 @@ const blogSchema = new mongoose.Schema({
 
 type BlogModel = Model<Blog & Document> | undefined;
 
-const existingModel = mongoose.model?.("Blog") as BlogModel;
+let blogModel: BlogModel;
 
-export default existingModel || mongoose.model<Blog>("Blog", blogSchema);
+if (mongoose.models.Blog) {
+  blogModel = mongoose.models.Blog as BlogModel;
+} else {
+  blogModel = mongoose.model<Blog & Document>("Blog", blogSchema);
+}
+
+export default blogModel;

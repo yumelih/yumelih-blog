@@ -1,8 +1,10 @@
-export interface Blog {
+interface BlogInterface {
   _id: string;
   title: string;
   posterImage: string;
   blogMd: string;
 }
 
-export type BlogType = Blog[];
+export type Blog = BlogInterface | undefined | null;
+
+export type BlogType = Blog[] | undefined;
