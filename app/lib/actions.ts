@@ -7,6 +7,16 @@ connect().then(() => {
   console.log("connection successfull");
 });
 
+async function getMdFile(url: string): Promise<string | undefined> {
+  const res = await fetch(url);
+  if (!res.ok) {
+    return;
+  }
+  const data = await res.text();
+
+  return data;
+}
+
 export async function getAllBlogs(): Promise<BlogType> {
   try {
     const blogs: BlogType = await Blog?.find({});
@@ -19,7 +29,9 @@ export async function getAllBlogs(): Promise<BlogType> {
 export async function getABlog(id: string) {
   try {
     const blog: BType = await Blog?.findById({ _id: id });
-    return blog;
+    let mdFile;
+    if (blog?.blogMd) mdFile = await getMdFile(blog?.blogMd);
+    return { blog, mdFile };
   } catch (err) {
     console.error(err);
   }
