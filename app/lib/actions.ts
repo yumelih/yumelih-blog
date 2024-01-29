@@ -28,7 +28,7 @@ export async function getAllBlogs(): Promise<BlogType> {
     const blogs: BlogType = await Blog?.find({});
     return blogs;
   } catch (err) {
-    console.error(err);
+    console.error("Database error", err);
   }
 }
 
@@ -50,6 +50,7 @@ export async function getABlog(id: string): Promise<BlogReturnType> {
     return { blog, mdFile };
   } catch (err) {
     console.error(err);
-    return { blog: null, mdFile: null, error: (err as Error).message };
+    throw new Error("Failed to fetch the blogs");
+    // return { blog: null, mdFile: null, error: (err as Error).message };
   }
 }
