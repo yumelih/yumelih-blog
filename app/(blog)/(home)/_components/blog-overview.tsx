@@ -12,9 +12,9 @@ export default async function BlogOverview() {
         return (
           <BlogPost
             key={blog?._id}
-            id={blog._id}
-            title={blog.title}
-            posterImage={blog.posterImage}
+            id={blog?._id}
+            title={blog?.title}
+            posterImage={blog?.posterImage}
           />
         );
       })}

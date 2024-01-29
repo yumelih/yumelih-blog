@@ -1,5 +1,7 @@
-import connect from "./db";
+import { remark } from "remark";
+import html from "remark-html";
 
+import connect from "./db";
 import Blog from "@/app/lib/models/blogModel";
 import { Blog as BType, BlogType } from "./definitions";
 
@@ -14,7 +16,11 @@ async function getMdFile(url: string): Promise<string | undefined> {
   }
   const data = await res.text();
 
-  return data;
+  const processedMd = await remark().use(html).process(data);
+
+  const contentHTML = processedMd.toString();
+
+  return contentHTML;
 }
 
 export async function getAllBlogs(): Promise<BlogType> {

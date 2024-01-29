@@ -6,14 +6,19 @@ export default function BlogPost({
   title,
   posterImage,
 }: {
-  id: string;
-  title: string;
-  posterImage: string;
+  id: string | undefined;
+  title: string | undefined;
+  posterImage: string | undefined;
 }) {
   return (
     <>
       <div className="grid grid-cols-[max-content_minmax(min-content,600px)] justify-center gap-x-4 gap-y-2">
-        <Image src={posterImage} width={160} height={160} alt="blog image" />
+        <Image
+          src={posterImage ? posterImage : ""}
+          width={160}
+          height={160}
+          alt="blog image"
+        />
         <div>
           <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
           <div className="flex items-center gap-3 text-gray-600">

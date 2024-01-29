@@ -1,5 +1,7 @@
-import Markdown from "react-markdown";
-
-export default function BlogMarkdown({ mdURL }: { mdURL: string }) {
-  return <Markdown>{mdURL}</Markdown>;
+export default function BlogMarkdown({ mdContent }: { mdContent: string }) {
+  return (
+    <div>
+      <div dangerouslySetInnerHTML={{ __html: mdContent }} />;
+    </div>
+  );
 }
