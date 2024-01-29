@@ -1,5 +1,5 @@
 import Image from "next/image";
-import SubscribeNewslatter from "../(home)/_components/subscribe-newslatter";
+import SubscribeNewslatter from "../../ui/subscribe-newslatter";
 
 export default function Page() {
   return (
@@ -26,7 +26,9 @@ export default function Page() {
           alt="blog image"
         />
         <div className="space-y-2">
-          <h3 className="text-xl font-bold text-gray-900">About the blog</h3>
+          <h3 className="m-0 text-xl font-bold text-gray-900">
+            About the blog
+          </h3>
           <p>
             Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
             Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
@@ -47,7 +49,7 @@ export default function Page() {
           </p>
         </div>
         <div className="space-y-2">
-          <h3 className="text-xl font-bold text-gray-900">
+          <h3 className="m-0 text-xl font-bold text-gray-900">
             My Skills and Experience
           </h3>
           <p>
@@ -60,7 +62,7 @@ export default function Page() {
           </p>
         </div>
         <div className="space-y-2">
-          <h3 className="text-xl font-bold text-gray-900">Side Projects</h3>
+          <h3 className="m-0 text-xl font-bold text-gray-900">Side Projects</h3>
           <p>
             Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
             Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.

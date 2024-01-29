@@ -1,12 +1,5 @@
-import SubscribeNewslatter from "../../(home)/_components/subscribe-newslatter";
+import SubscribeNewslatter from "../../../ui/subscribe-newslatter";
 
 export default function BlogMarkdown({ mdContent }: { mdContent: string }) {
-  return (
-    <>
-      <div dangerouslySetInnerHTML={{ __html: mdContent }} />
-      <div className="col-start-2">
-        <SubscribeNewslatter />
-      </div>
-    </>
-  );
+  return <div dangerouslySetInnerHTML={{ __html: mdContent }} />;
 }

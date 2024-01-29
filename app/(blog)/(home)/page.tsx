@@ -1,5 +1,5 @@
 import BlogOverview from "./_components/blog-overview";
-import SubscribeNewslatter from "./_components/subscribe-newslatter";
+import SubscribeNewslatter from "../../ui/subscribe-newslatter";
 
 export default function Home() {
   return (

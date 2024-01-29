@@ -11,7 +11,7 @@ import { ReactElement } from "react";
 const navLinks: { href: string; title: string; icon: React.ReactElement }[] = [
   { href: "/", title: "Blog Home", icon: <HomeIcon className="h-6 w-6" /> },
   {
-    href: "/first",
+    href: "/65b3c3ad5e0b0f3fa46580d7",
     title: "Blog Post",
     icon: <BookmarkIcon className="h-6 w-6" />,
   },
