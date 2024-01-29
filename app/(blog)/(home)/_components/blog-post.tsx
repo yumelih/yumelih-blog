@@ -20,7 +20,7 @@ export default function BlogPost({
           alt="blog image"
         />
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
+          <h2 className="m-0 text-2xl font-bold text-gray-900">{title}</h2>
           <div className="flex items-center gap-3 text-gray-600">
             <p>Published 2 days ago</p>
             <p className="text-2xl">&middot;</p>

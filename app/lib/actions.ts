@@ -32,13 +32,24 @@ export async function getAllBlogs(): Promise<BlogType> {
   }
 }
 
-export async function getABlog(id: string) {
+interface BlogReturnType {
+  blog: BType | null;
+  mdFile: string | undefined | null;
+  error?: string;
+}
+
+export async function getABlog(id: string): Promise<BlogReturnType> {
   try {
     const blog: BType = await Blog?.findById({ _id: id });
-    let mdFile;
-    if (blog?.blogMd) mdFile = await getMdFile(blog?.blogMd);
+    let mdFile: string | undefined | null = null;
+
+    if (blog?.blogMd) {
+      mdFile = await getMdFile(blog.blogMd);
+    }
+
     return { blog, mdFile };
   } catch (err) {
     console.error(err);
+    return { blog: null, mdFile: null, error: (err as Error).message };
   }
 }
