@@ -10,17 +10,21 @@ connect().then(() => {
 });
 
 async function getMdFile(url: string): Promise<string | undefined> {
-  const res = await fetch(url);
-  if (!res.ok) {
-    return;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      return;
+    }
+    const data = await res.text();
+
+    const processedMd = await remark().use(html).process(data);
+
+    const contentHTML = processedMd.toString();
+
+    return contentHTML;
+  } catch (err) {
+    console.log(err);
   }
-  const data = await res.text();
-
-  const processedMd = await remark().use(html).process(data);
-
-  const contentHTML = processedMd.toString();
-
-  return contentHTML;
 }
 
 export async function getAllBlogs(): Promise<BlogType> {
@@ -35,22 +39,26 @@ export async function getAllBlogs(): Promise<BlogType> {
 interface BlogReturnType {
   blog: BType | null;
   mdFile: string | undefined | null;
-  error?: string;
+  error?: string | null;
 }
 
 export async function getABlog(id: string): Promise<BlogReturnType> {
   try {
-    const blog: BType = await Blog?.findById({ _id: id });
+    let blog: BType | null = null;
+    blog = await Blog?.findById({ _id: id });
     let mdFile: string | undefined | null = null;
 
     if (blog?.blogMd) {
       mdFile = await getMdFile(blog.blogMd);
     }
 
-    return { blog, mdFile };
+    // Ensure this function always returns an object of type BlogReturnType
+    return { blog, mdFile, error: null };
   } catch (err) {
-    console.error(err);
-    throw new Error("Failed to fetch the blogs");
-    // return { blog: null, mdFile: null, error: (err as Error).message };
+    console.log(err);
+
+    // Handle the error case by returning an object with the error field populated
+    // and the other fields set to their default values
+    return { blog: null, mdFile: null, error: (err as Error).message };
   }
 }
