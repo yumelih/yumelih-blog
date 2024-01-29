@@ -2,8 +2,8 @@ import Button from "@/app/ui/button";
 
 export default function SubscribeNewslatter() {
   return (
-    <div className="flex w-full flex-col items-center space-y-2 bg-gray-300 p-4">
-      <h1 className="text-3xl font-bold text-gray-900">
+    <div className="flex w-full flex-col items-center space-y-3 bg-gray-300 px-4 py-8">
+      <h1 className="m-0 text-3xl font-bold text-gray-900">
         DevBlog - A Blog Template Made For Developers
       </h1>
       <p className="text-gray-700">
