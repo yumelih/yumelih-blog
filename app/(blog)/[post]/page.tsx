@@ -2,6 +2,8 @@ import { getABlog } from "@/app/lib/actions";
 import BlogMarkdown from "./_components/blog-markdown";
 import SubscribeNewslatter from "../../ui/subscribe-newslatter";
 import { notFound } from "next/navigation";
+import { SubscribeSkeleton } from "@/app/ui/skeletons/subscribe-skeleton";
+import { BlogpostSkeleton } from "@/app/ui/skeletons/blogpost-skeleton";
 
 export default async function Page({ params }: { params: { post: string } }) {
   const postId = params.post;
